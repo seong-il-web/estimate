@@ -2,32 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-white text-gray-800;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+section {
+  @apply transition-opacity duration-500 ease-in-out;
+}
+
+/* Add this new style for better visibility of header text when transparent */
+
+/* Swiper 스타일 커스터마이징 */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+  opacity: 1;
 }
