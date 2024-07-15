@@ -1,6 +1,6 @@
 "use client";
 
-import FullscreenSwiper from "@/_components/FullScreenSwiper";
+import FullscreenSwiper from "@/_components/FullscreenSwiper";
 import { useEffect } from "react";
 
 export default function Home() {
