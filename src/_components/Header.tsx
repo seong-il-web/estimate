@@ -32,7 +32,14 @@ export default function Header() {
       ></div>
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
         <div className="text-2xl font-bold text-gray-800 select-none">
-          <Image src={logo} alt="logo" width={180} height={54} />
+          <Image
+            className="w-[100px] md:w-[180px]"
+            src={logo}
+            alt="logo"
+            width={180}
+            height={54}
+            sizes="(max-width: 768px) 100px, 180px"
+          />
         </div>
       </nav>
     </header>
