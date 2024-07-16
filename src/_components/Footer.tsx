@@ -8,24 +8,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="#" className="hover:text-white">
-                  회사 소개
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  연혁
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  채용 정보
+                  회사 소개 내용 출력
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-700 pt-8 text-sm">
-          <p>© 2024 회사명. All rights reserved.</p>
+          <p>© 2024 성일씨앤피. All rights reserved.</p>
         </div>
       </div>
     </footer>

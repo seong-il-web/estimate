@@ -6,8 +6,8 @@ import Footer from "@/_components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Toss 스타일 랜딩 페이지",
-  description: "Toss 웹사이트를 모티브로 한 랜딩 페이지",
+  title: "(주)성일씨앤피",
+  description: "교육교재,학원교재 견적은 성일씨앤피",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

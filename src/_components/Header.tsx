@@ -31,28 +31,6 @@ export default function Header() {
       ></div>
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
         <div className="text-2xl font-bold text-gray-800">로고</div>
-        <ul className="flex space-x-6">
-          <li>
-            <a href="#home" className="text-gray-800 hover:text-blue-500 transition-colors duration-300">
-              홈
-            </a>
-          </li>
-          <li>
-            <a href="#about" className="text-gray-800 hover:text-blue-500 transition-colors duration-300">
-              소개
-            </a>
-          </li>
-          <li>
-            <a href="#services" className="text-gray-800 hover:text-blue-500 transition-colors duration-300">
-              서비스
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="text-gray-800 hover:text-blue-500 transition-colors duration-300">
-              문의
-            </a>
-          </li>
-        </ul>
       </nav>
     </header>
   );
