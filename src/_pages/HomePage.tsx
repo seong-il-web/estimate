@@ -205,32 +205,32 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-12 md:space-y-0 md:space-x-16">
               <div className="text-center">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 relative mb-4">
+                <div className="w-80 h-80 sm:w-96 sm:h-96 relative mb-6">
                   <Image
                     src={img05}
                     alt="img_05"
                     layout="fill"
                     objectFit="contain"
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg shadow-xl"
                   />
                 </div>
-                <p className="text-lg font-semibold text-cyan-700">300dpi</p>
-                <p className="text-base text-gray-600">선명한 화질</p>
+                <p className="text-xl font-semibold text-cyan-700">300dpi</p>
+                <p className="text-lg text-gray-600">선명한 화질</p>
               </div>
               <div className="text-center">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 relative mb-4">
+                <div className="w-80 h-80 sm:w-96 sm:h-96 relative mb-6">
                   <Image
                     src={img04}
                     alt="img_04"
                     layout="fill"
                     objectFit="contain"
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg shadow-xl"
                   />
                 </div>
-                <p className="text-lg font-semibold text-cyan-700">72dpi</p>
-                <p className="text-base text-gray-600">흐린 화질</p>
+                <p className="text-xl font-semibold text-cyan-700">72dpi</p>
+                <p className="text-lg text-gray-600">흐린 화질</p>
               </div>
             </div>
           </div>
