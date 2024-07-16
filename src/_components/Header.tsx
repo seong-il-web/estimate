@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { FcStatistics } from "react-icons/fc";
+import Image from "next/image";
+import logo from "@/_assets/logo.jpg";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +31,9 @@ export default function Header() {
         }`}
       ></div>
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
-        <div className="text-2xl font-bold text-gray-800">성일씨앤피</div>
+        <div className="text-2xl font-bold text-gray-800 select-none">
+          <Image src={logo} alt="logo" width={180} height={54} />
+        </div>
       </nav>
     </header>
   );
