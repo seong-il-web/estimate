@@ -30,7 +30,7 @@ export default function Header() {
         }`}
       ></div>
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center relative z-10">
-        <div className="text-2xl font-bold text-gray-800">로고</div>
+        <div className="text-2xl font-bold text-gray-800">성일씨앤피</div>
       </nav>
     </header>
   );

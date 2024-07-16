@@ -1,20 +1,40 @@
+import React from "react";
+
+const FooterSection = ({ items }: any) => (
+  <div className="w-full md:w-1/2 mb-4 md:mb-0">
+    <ul>
+      {items.map((item: any, index: number) => (
+        <li key={index} className="mb-1">
+          <span className="text-gray-400 text-sm">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 export default function Footer() {
+  const companyInfo = [
+    "상호: 성일씨앤피",
+    "대표이사: 정환석",
+    "전화번호: 02-2272-5648",
+    "팩스: 02-2272-5649",
+    "이메일: sungil5647@hanmail.net",
+  ];
+
+  const addressInfo = [
+    "주소: 서울시 중구 충무로4길 2 정화빌딩 201호",
+    "사업등록번호: 214-14-06105",
+    "통신사업자등록번호: 중구 07644호",
+  ];
+
   return (
-    <footer className="bg-gray-800 text-gray-400 py-12">
+    <footer className="bg-gray-800 text-gray-400 py-6">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h4 className="text-white font-semibold mb-4">회사</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-white">
-                  회사 소개 내용 출력
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="flex flex-wrap -mx-2">
+          <FooterSection items={companyInfo} />
+          <FooterSection items={addressInfo} />
         </div>
-        <div className="border-t border-gray-700 pt-8 text-sm">
+        <div className="border-t border-gray-700 mt-4 pt-4 text-xs text-center">
           <p>© 2024 성일씨앤피. All rights reserved.</p>
         </div>
       </div>
