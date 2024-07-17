@@ -365,6 +365,36 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">내지</h3>
                 <div className="space-y-4">
                   <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
+                    <Select
+                      options={innerPaperOptions}
+                      value={innerPaper}
+                      onChange={(option) => setInnerPaper(option)}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
+                    <Select
+                      options={getInnerWeightOptions(innerPaper?.value)}
+                      value={innerWeight}
+                      onChange={(option) => setInnerWeight(option)}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
                     <Select
                       isSearchable={false}
