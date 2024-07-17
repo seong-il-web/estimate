@@ -17,15 +17,15 @@ import background_off from "@/_assets/background_off.webp";
 import overprint_img from "@/_assets/overprint_img.webp";
 import Image from "next/image";
 
-import Select, { SingleValue } from "react-select";
+import Select from "react-select";
 import { calculatePrice } from "@/_utils";
 
 type OptionType = { value: string; label: string };
 
 const sizeInfo = {
-  A4: { 재단사이즈: "210*297", 작업사이즈: "216*303" },
-  B5: { 재단사이즈: "182*257", 작업사이즈: "182*2563" },
-  A5: { 재단사이즈: "148*210", 작업사이즈: "154*216" },
+  A4: { cutSize: "210*297", workSize: "216*303" },
+  B5: { cutSize: "182*257", workSize: "182*2563" },
+  A5: { cutSize: "148*210", workSize: "154*216" },
 };
 
 export default function Home() {
@@ -52,14 +52,14 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [binding, setBinding] = useState<OptionType | null>({ value: "무선제본", label: "무선제본" });
-  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "랑데부지", label: "랑데부지" });
+  const [binding, setBinding] = useState<OptionType | null>({ value: "wireBinding", label: "무선제본" });
+  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "rendezvous", label: "랑데부지" });
   const [coverWeight, setCoverWeight] = useState<OptionType | null>({ value: "180", label: "180g" });
-  const [coverCoating, setCoverCoating] = useState<OptionType | null>({ value: "코팅없음", label: "코팅없음" });
-  const [innerPaper, setInnerPaper] = useState<OptionType | null>({ value: "미색모조", label: "미색모조" });
+  const [coverCoating, setCoverCoating] = useState<OptionType | null>({ value: "noCoating", label: "코팅없음" });
+  const [innerPaper, setInnerPaper] = useState<OptionType | null>({ value: "ivoryMosaic", label: "미색모조" });
   const [innerWeight, setInnerWeight] = useState<OptionType | null>({ value: "80", label: "80g" });
-  const [innerPrinting, setInnerPrinting] = useState<OptionType | null>({ value: "양면흑백", label: "양면흑백" });
-  const [outPrinting, setOutPrinting] = useState<OptionType | null>({ value: "양면흑백", label: "양면흑백" });
+  const [innerPrinting, setInnerPrinting] = useState<OptionType | null>({ value: "doubleBlack", label: "양면흑백" });
+  const [outPrinting, setOutPrinting] = useState<OptionType | null>({ value: "doubleBlack", label: "양면흑백" });
   const [estimatedPrice, setEstimatedPrice] = useState<number>(0);
 
   const [selectedSize, setSelectedSize] = useState<OptionType | null>({ value: "A4", label: "A4(210mm X 297mm)" });
@@ -100,32 +100,32 @@ export default function Home() {
   ];
 
   const bindingOptions: OptionType[] = [
-    { value: "무선제본", label: "무선제본" },
-    { value: "스프링제본", label: "스프링제본(트윈링)" },
+    { value: "wireBinding", label: "무선제본" },
+    { value: "springBinding", label: "스프링제본(트윈링)" },
   ];
 
   const coverPaperOptions: OptionType[] = [
-    { value: "랑데부지", label: "랑데부지" },
-    { value: "스노우지", label: "스노우지" },
-    { value: "아트지", label: "아트지" },
+    { value: "rendezvous", label: "랑데부지" },
+    { value: "snow", label: "스노우지" },
+    { value: "art", label: "아트지" },
   ];
 
   const getCoverWeightOptions = (paperType: string | undefined): OptionType[] => {
     switch (paperType) {
-      case "랑데부지":
+      case "rendezvous":
         return [
           { value: "190", label: "190g" },
           { value: "210", label: "210g" },
           { value: "240", label: "240g" },
         ];
-      case "스노우지":
+      case "snow":
         return [
           { value: "180", label: "180g" },
           { value: "200", label: "200g" },
           { value: "250", label: "250g" },
           { value: "300", label: "300g" },
         ];
-      case "아트지":
+      case "art":
         return [
           { value: "180", label: "180g" },
           { value: "200", label: "200g" },
@@ -137,25 +137,25 @@ export default function Home() {
     }
   };
 
-  const coverPrintingOptions: OptionType[] = [{ value: "양면칼라", label: "양면칼라" }];
+  const coverPrintingOptions: OptionType[] = [{ value: "doubleColor", label: "양면칼라" }];
 
   const coverCoatingOptions: OptionType[] = [
-    { value: "코팅없음", label: "코팅없음" },
-    { value: "단면무광코팅", label: "단면무광코팅" },
-    { value: "단면유광코팅", label: "단면유광코팅" },
+    { value: "noCoating", label: "코팅없음" },
+    { value: "singleMatteCoating", label: "단면무광코팅" },
+    { value: "singleGlossCoating", label: "단면유광코팅" },
   ];
 
   const innerPaperOptions: OptionType[] = [
-    { value: "미색모조", label: "미색모조" },
-    { value: "백색모조", label: "백색모조" },
-    { value: "뉴플러스지", label: "뉴플러스지" },
+    { value: "ivoryMosaic", label: "미색모조" },
+    { value: "whiteMosaic", label: "백색모조" },
+    { value: "newPlus", label: "뉴플러스지" },
   ];
 
   const getInnerWeightOptions = (paperType: string | undefined): OptionType[] => {
     switch (paperType) {
-      case "미색모조":
-      case "백색모조":
-      case "뉴플러스지":
+      case "ivoryMosaic":
+      case "whiteMosaic":
+      case "newPlus":
         return [
           { value: "80", label: "80g" },
           { value: "100", label: "100g" },
@@ -166,8 +166,8 @@ export default function Home() {
   };
 
   const innerPrintingOptions: OptionType[] = [
-    { value: "양면흑백", label: "양면흑백" },
-    { value: "양면칼라", label: "양면칼라" },
+    { value: "doubleBlack", label: "양면흑백" },
+    { value: "doubleColor", label: "양면칼라" },
   ];
 
   useEffect(() => {
@@ -240,8 +240,8 @@ export default function Home() {
                         <tbody>
                           <tr>
                             <td>{selectedSize.value}</td>
-                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].재단사이즈}</td>
-                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].작업사이즈}</td>
+                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].cutSize}</td>
+                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].workSize}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -304,7 +304,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="sm:w-32">
-                      {/* <label className="block text-sm font-medium text-gray-700 mb-1 sm:opacity-0">평량</label> */}
+                      <label className="block text-sm font-medium text-gray-700 mb-1 opacity-0 mobile:hidden">
+                        평량
+                      </label>
                       <Select
                         isSearchable={false}
                         options={getCoverWeightOptions(coverPaper?.value)}
@@ -394,7 +396,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="sm:w-32">
-                      {/* <label className="block text-sm font-medium text-gray-700 mb-1 sm:opacity-0">평량</label> */}
+                      <label className="block text-sm font-medium text-gray-700 mb-1 opacity-0 mobile:hidden">
+                        평량
+                      </label>
                       <Select
                         options={getInnerWeightOptions(innerPaper?.value)}
                         value={innerWeight}
