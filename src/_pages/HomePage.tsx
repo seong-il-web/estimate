@@ -22,6 +22,12 @@ import { calculatePrice } from "@/_utils";
 
 type OptionType = { value: string; label: string };
 
+const sizeInfo = {
+  A4: { 재단사이즈: "210*297", 작업사이즈: "216*303" },
+  B5: { 재단사이즈: "182*257", 작업사이즈: "182*2563" },
+  A5: { 재단사이즈: "148*210", 작업사이즈: "154*216" },
+};
+
 export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
@@ -46,23 +52,51 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [selectedSize, setSelectedSize] = useState<OptionType | null>({ value: "B5", label: "B5(188mm X 257mm)" });
-  const [quantity, setQuantity] = useState<number>(20);
   const [binding, setBinding] = useState<OptionType | null>({ value: "무선제본", label: "무선제본" });
-  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "스노우지", label: "스노우지" });
+  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "랑데부지", label: "랑데부지" });
   const [coverWeight, setCoverWeight] = useState<OptionType | null>({ value: "180", label: "180g" });
-  const [coverPrinting, setCoverPrinting] = useState<OptionType | null>({ value: "양면칼라", label: "양면칼라" });
   const [coverCoating, setCoverCoating] = useState<OptionType | null>({ value: "코팅없음", label: "코팅없음" });
   const [innerPaper, setInnerPaper] = useState<OptionType | null>({ value: "미색모조", label: "미색모조" });
   const [innerWeight, setInnerWeight] = useState<OptionType | null>({ value: "80", label: "80g" });
   const [innerPrinting, setInnerPrinting] = useState<OptionType | null>({ value: "양면흑백", label: "양면흑백" });
-  const [innerPages, setInnerPages] = useState<number>(100);
+  const [outPrinting, setOutPrinting] = useState<OptionType | null>({ value: "양면흑백", label: "양면흑백" });
   const [estimatedPrice, setEstimatedPrice] = useState<number>(0);
 
+  const [selectedSize, setSelectedSize] = useState<OptionType | null>({ value: "A4", label: "A4(210mm X 297mm)" });
+  const [quantity, setQuantity] = useState<OptionType>({ value: "20", label: "20부" });
+
+  const [coverPages, setCoverPages] = useState(4);
+  const [innerPages, setInnerPages] = useState(52);
+
+  const generateInnerPageOptions = () => {
+    let options = [];
+    for (let i = 52; i <= 1000; i += 4) {
+      options.push({ value: i.toString(), label: `${i}페이지` });
+    }
+    return options;
+  };
+
+  const innerPageOptions = generateInnerPageOptions();
+
   const sizeOptions: OptionType[] = [
-    { value: "B5", label: "B5(188mm X 257mm)" },
     { value: "A4", label: "A4(210mm X 297mm)" },
     { value: "A5", label: "A5(148mm X 210mm)" },
+    { value: "B5", label: "B5(188mm X 257mm)" },
+  ];
+
+  const quantityOptions: OptionType[] = [
+    { value: "10", label: "10부" },
+    { value: "20", label: "20부" },
+    { value: "30", label: "30부" },
+    { value: "50", label: "50부" },
+    { value: "100", label: "100부" },
+    { value: "150", label: "150부" },
+    { value: "200", label: "200부" },
+    { value: "250", label: "250부" },
+    { value: "300", label: "300부" },
+    { value: "400", label: "400부" },
+    { value: "500", label: "500부" },
+    { value: "1000", label: "1000부" },
   ];
 
   const bindingOptions: OptionType[] = [
@@ -71,12 +105,19 @@ export default function Home() {
   ];
 
   const coverPaperOptions: OptionType[] = [
-    { value: "스노우지", label: "스노우지" },
     { value: "랑데부지", label: "랑데부지" },
+    { value: "스노우지", label: "스노우지" },
+    { value: "아트지", label: "아트지" },
   ];
 
   const getCoverWeightOptions = (paperType: string | undefined): OptionType[] => {
     switch (paperType) {
+      case "랑데부지":
+        return [
+          { value: "190", label: "190g" },
+          { value: "210", label: "210g" },
+          { value: "240", label: "240g" },
+        ];
       case "스노우지":
         return [
           { value: "180", label: "180g" },
@@ -84,11 +125,12 @@ export default function Home() {
           { value: "250", label: "250g" },
           { value: "300", label: "300g" },
         ];
-      case "랑데부지":
+      case "아트지":
         return [
-          { value: "190", label: "190g" },
-          { value: "210", label: "210g" },
-          { value: "240", label: "240g" },
+          { value: "180", label: "180g" },
+          { value: "200", label: "200g" },
+          { value: "250", label: "250g" },
+          { value: "300", label: "300g" },
         ];
       default:
         return [];
@@ -129,16 +171,16 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    const price = calculatePrice({
-      coverPaper: coverPaper?.value,
-      coverWeight: coverWeight?.value,
-      innerWeight: innerWeight?.value,
-      binding: binding?.value,
-      innerPrinting: innerPrinting?.value,
-      innerPages,
-      quantity,
-    });
-    setEstimatedPrice(price);
+    // const price = calculatePrice({
+    //   coverPaper: coverPaper?.value,
+    //   coverWeight: coverWeight?.value,
+    //   innerWeight: innerWeight?.value,
+    //   binding: binding?.value,
+    //   innerPrinting: innerPrinting?.value,
+    //   innerPages,
+    //   quantity,
+    // });
+    setEstimatedPrice(0);
   }, [coverPaper, coverWeight, innerWeight, binding, innerPrinting, innerPages, quantity]);
 
   // Effect to update coverWeight when coverPaper changes
@@ -172,6 +214,7 @@ export default function Home() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">규격</label>
                     <Select
+                      isSearchable={false}
                       options={sizeOptions}
                       value={selectedSize}
                       onChange={(option) => setSelectedSize(option)}
@@ -184,18 +227,46 @@ export default function Home() {
                       }}
                     />
                   </div>
+                  {selectedSize && (
+                    <div className="bg-gray-100 p-4 rounded-md">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr>
+                            <th className="text-left font-semibold">규격</th>
+                            <th className="text-left font-semibold">재단사이즈</th>
+                            <th className="text-left font-semibold">작업사이즈</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{selectedSize.value}</td>
+                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].재단사이즈}</td>
+                            <td>{sizeInfo[selectedSize.value as keyof typeof sizeInfo].작업사이즈}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">수량</label>
-                    <input
-                      type="number"
+                    <Select
+                      isSearchable={false}
+                      options={quantityOptions}
                       value={quantity}
-                      onChange={(e) => setQuantity(Number(e.target.value))}
-                      className="w-full px-3 py-2 border rounded"
+                      onChange={(option) => setQuantity(option as OptionType)}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">제본</label>
                     <Select
+                      isSearchable={false}
                       options={bindingOptions}
                       value={binding}
                       onChange={(option) => setBinding(option)}
@@ -218,6 +289,7 @@ export default function Home() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
                     <Select
+                      isSearchable={false}
                       options={coverPaperOptions}
                       value={coverPaper}
                       onChange={(option) => setCoverPaper(option)}
@@ -233,6 +305,7 @@ export default function Home() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
                     <Select
+                      isSearchable={false}
                       options={getCoverWeightOptions(coverPaper?.value)}
                       value={coverWeight}
                       onChange={(option) => setCoverWeight(option)}
@@ -248,9 +321,10 @@ export default function Home() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
                     <Select
-                      options={coverPrintingOptions}
-                      value={coverPrinting}
-                      onChange={(option) => setCoverPrinting(option)}
+                      isSearchable={false}
+                      options={innerPrintingOptions}
+                      value={outPrinting}
+                      onChange={(option) => setOutPrinting(option)}
                       styles={{
                         control: (base) => ({
                           ...base,
@@ -261,8 +335,18 @@ export default function Home() {
                     />
                   </div>
                   <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
+                    <input
+                      type="number"
+                      value={coverPages}
+                      readOnly
+                      className="w-full px-3 py-2 border rounded bg-gray-100"
+                    />
+                  </div>
+                  <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">코팅</label>
                     <Select
+                      isSearchable={false}
                       options={coverCoatingOptions}
                       value={coverCoating}
                       onChange={(option) => setCoverCoating(option)}
@@ -277,44 +361,13 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              {/* 내지 */}
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">내지</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
-                    <Select
-                      options={innerPaperOptions}
-                      value={innerPaper}
-                      onChange={(option) => setInnerPaper(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
-                    <Select
-                      options={getInnerWeightOptions(innerPaper?.value)}
-                      value={innerWeight}
-                      onChange={(option) => setInnerWeight(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
-                    />
-                  </div>
-                  <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
                     <Select
+                      isSearchable={false}
                       options={innerPrintingOptions}
                       value={innerPrinting}
                       onChange={(option) => setInnerPrinting(option)}
@@ -329,12 +382,27 @@ export default function Home() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
-                    <input
-                      type="number"
-                      value={innerPages}
-                      onChange={(e) => setInnerPages(Number(e.target.value))}
-                      className="w-full px-3 py-2 border rounded"
+                    <Select
+                      isSearchable={false}
+                      options={innerPageOptions}
+                      value={innerPageOptions.find((option) => option.value === innerPages.toString())}
+                      onChange={(option) => setInnerPages(Number(option?.value))}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
                     />
+                  </div>
+                  <div className="text-sm text-red-600">50페이지 미만 별도 문의</div>
+                  <div className="flex items-center">
+                    <span className="text-xl font-medium text-gray-700 mr-2">면지 추가</span>
+                    <span className="text-xl text-blue-600">별도 문의</span>
+                  </div>
+                  <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
+                    <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">후가공 - 별도 문의</p>
                   </div>
                 </div>
               </div>
@@ -362,6 +430,32 @@ export default function Home() {
                   문의하기
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
+        <div className="container mx-auto flex flex-col items-center">
+          <div className="w-full mb-8 sm:mb-12 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-[#212121]">
+              교육교재, 학원교재
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-700 mb-2 sm:mb-4">
+              이제는 디지털 인쇄로 진행해보세요
+            </p>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-1 sm:mb-2">
+              디지털 윤전의 품질보다 고퀄리티의 품질과
+            </p>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">
+              고객을 만족 시키는 가격으로 성일과 함께하세요
+            </p>
+          </div>
+          <div className="w-full aspect-video max-w-2xl mx-auto">
+            <div className="w-full h-full bg-gradient-to-br from-cyan-500 to-blue-600 flex justify-center items-center rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300">
+              <span className="text-white text-3xl sm:text-lg md:text-xl lg:text-5xl font-bold">
+                고품질 디지털 인쇄
+              </span>
             </div>
           </div>
         </div>
