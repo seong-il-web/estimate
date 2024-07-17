@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import img01 from "@/_assets/img_01.webp";
 import img02 from "@/_assets/img_02.webp";
 import img02_01 from "@/_assets/img_02_01.webp";
@@ -16,6 +16,10 @@ import background_on from "@/_assets/background_on.webp";
 import background_off from "@/_assets/background_off.webp";
 import overprint_img from "@/_assets/overprint_img.webp";
 import Image from "next/image";
+
+import Select, { SingleValue } from "react-select";
+
+type OptionType = { value: string; label: string };
 
 export default function Home() {
   useEffect(() => {
@@ -41,8 +45,325 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [selectedSize, setSelectedSize] = useState<OptionType | null>({ value: "B5", label: "B5(188mm X 257mm)" });
+  const [quantity, setQuantity] = useState<number>(20);
+  const [binding, setBinding] = useState<OptionType | null>({ value: "PUR", label: "PUR제본" });
+  const [bindingMethod, setBindingMethod] = useState<OptionType | null>({ value: "perfect", label: "무선제본" });
+
+  const sizeOptions: OptionType[] = [
+    { value: "B5", label: "B5(188mm X 257mm)" },
+    { value: "A4", label: "A4(210mm X 297mm)" },
+    { value: "A5", label: "A5(148mm X 210mm)" },
+  ];
+
+  const handleSizeChange = (selectedOption: SingleValue<OptionType>) => {
+    setSelectedSize(selectedOption);
+  };
+
+  const handleBindingChange = (selectedOption: SingleValue<OptionType>) => {
+    setBinding(selectedOption);
+  };
+
+  const handleBindingMethodChange = (selectedOption: SingleValue<OptionType>) => {
+    setBindingMethod(selectedOption);
+  };
   return (
     <main className="w-full bg-gray-50">
+      <section id="calc" className="px-4 sm:px-6 lg:px-8 py-6 sm:py-16 mt-[48px] bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Book cover images */}
+          <div className="w-full aspect-[2/1] bg-gray-200 mb-6 rounded-lg relative overflow-hidden">
+            <Image src="/path-to-your-image.jpg" alt="Book cover examples" layout="fill" objectFit="cover" />
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left column */}
+            <div className="lg:w-2/3">
+              {/* 기본정보 */}
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">기본정보</h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">규격</label>
+                    <Select
+                      options={sizeOptions}
+                      value={selectedSize}
+                      onChange={(option) => setSelectedSize(option)}
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  {selectedSize && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">제단사이즈</label>
+                        <div className="flex items-center">
+                          <input type="text" value="188" readOnly className="w-16 px-2 py-1 border rounded mr-2" />
+                          <span className="mx-2">X</span>
+                          <input type="text" value="257" readOnly className="w-16 px-2 py-1 border rounded mr-2" />
+                          <span>mm</span>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">작업사이즈</label>
+                        <div className="flex items-center">
+                          <input type="text" value="192" readOnly className="w-16 px-2 py-1 border rounded mr-2" />
+                          <span className="mx-2">X</span>
+                          <input type="text" value="261" readOnly className="w-16 px-2 py-1 border rounded mr-2" />
+                          <span>mm</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">수량</label>
+                    <input
+                      type="number"
+                      value={quantity}
+                      onChange={(e) => setQuantity(Number(e.target.value))}
+                      className="w-full px-3 py-2 border rounded"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">제본</label>
+                      <Select
+                        options={[
+                          { value: "PUR", label: "PUR제본" },
+                          { value: "saddle", label: "중철제본" },
+                        ]}
+                        value={binding}
+                        onChange={(option) => setBinding(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                          }),
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">기본작업</label>
+                      <Select
+                        options={[
+                          { value: "perfect", label: "무선제본" },
+                          { value: "spiral", label: "스프링제본" },
+                        ]}
+                        value={bindingMethod}
+                        onChange={(option) => setBindingMethod(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                          }),
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 표지 */}
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">
+                  표지 <span className="text-sm">새네가: 4.5mm</span>
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
+                    <Select
+                      options={[{ value: "coated", label: "스노우지" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
+                    <Select
+                      options={[{ value: "190", label: "190g" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
+                    <Select
+                      options={[{ value: "4", label: "양면컬러" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
+                    <Select
+                      options={[{ value: "4", label: "4" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">코팅</label>
+                    <Select
+                      options={[{ value: "glossy", label: "유광" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* 내지 */}
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">내지</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
+                    <Select
+                      options={[{ value: "matte", label: "미색모조" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
+                    <Select
+                      options={[{ value: "80", label: "80g" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
+                    <Select
+                      options={[{ value: "4", label: "양면컬러" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
+                    <Select
+                      options={[{ value: "100", label: "100" }]}
+                      placeholder="선택해주세요"
+                      styles={{
+                        control: (base) => ({
+                          ...base,
+                          borderColor: "#d1d5db",
+                          "&:hover": { borderColor: "#9ca3af" },
+                        }),
+                      }}
+                    />
+                  </div>
+                </div>
+                {/* <div className="mt-4">
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                    면지추가
+                  </button>
+                </div> */}
+              </div>
+            </div>
+
+            {/* Right column */}
+            <div className="lg:w-1/3">
+              <div className="bg-gray-100 p-4 rounded-lg sticky top-[100px]">
+                <h3 className="text-xl font-semibold mb-4 text-blue-600">예상견적 금액</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span>인쇄비</span>
+                    <span>110,700원</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>제본비</span>
+                    <span>80,000원</span>
+                  </div>
+                  <div className="flex justify-between font-bold text-blue-600">
+                    <span>합계(VAT별도)</span>
+                    <span>190,700원</span>
+                  </div>
+                </div>
+                <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors mt-4">
+                  문의하기
+                </button>
+                {/* <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors mt-4">
+                  바로구문
+                </button>
+                <div className="flex justify-between mt-4">
+                  <button className="bg-white text-blue-600 border border-blue-600 py-2 px-4 rounded hover:bg-blue-100 transition-colors">
+                    견적서 인쇄
+                  </button>
+                  <button className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
+                    장바구니
+                  </button>
+                </div> */}
+                {/* <div className="mt-4">
+                  <div className="flex items-center justify-between bg-green-100 p-2 rounded">
+                    <span className="text-green-800 text-sm">NAVER 네이버페이 간편결제</span>
+                    <button className="bg-green-500 text-white px-2 py-1 rounded text-sm hover:bg-green-600 transition-colors">
+                      N pay 구매
+                    </button>
+                  </div>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="home" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
         <div className="container mx-auto flex flex-col items-center">
           <div className="w-full mb-8 sm:mb-12 text-center">
