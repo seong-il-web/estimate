@@ -286,36 +286,56 @@ export default function Home() {
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">표지</h3>
                 <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
-                    <Select
-                      isSearchable={false}
-                      options={coverPaperOptions}
-                      value={coverPaper}
-                      onChange={(option) => setCoverPaper(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
-                    />
+                  <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div className="flex-grow">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
+                      <Select
+                        isSearchable={false}
+                        options={coverPaperOptions}
+                        value={coverPaper}
+                        onChange={(option) => setCoverPaper(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                          }),
+                        }}
+                      />
+                    </div>
+                    <div className="sm:w-32">
+                      {/* <label className="block text-sm font-medium text-gray-700 mb-1 sm:opacity-0">평량</label> */}
+                      <Select
+                        isSearchable={false}
+                        options={getCoverWeightOptions(coverPaper?.value)}
+                        value={coverWeight}
+                        onChange={(option) => setCoverWeight(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                            minHeight: "38px",
+                          }),
+                          valueContainer: (base) => ({
+                            ...base,
+                            padding: "0 8px",
+                          }),
+                          singleValue: (base) => ({
+                            ...base,
+                            fontSize: "0.875rem",
+                          }),
+                        }}
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
-                    <Select
-                      isSearchable={false}
-                      options={getCoverWeightOptions(coverPaper?.value)}
-                      value={coverWeight}
-                      onChange={(option) => setCoverWeight(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
+                    <input
+                      type="number"
+                      value={coverPages}
+                      readOnly
+                      className="w-full px-3 py-2 border rounded bg-gray-100"
                     />
                   </div>
                   <div>
@@ -332,15 +352,6 @@ export default function Home() {
                           "&:hover": { borderColor: "#9ca3af" },
                         }),
                       }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
-                    <input
-                      type="number"
-                      value={coverPages}
-                      readOnly
-                      className="w-full px-3 py-2 border rounded bg-gray-100"
                     />
                   </div>
                   <div>
@@ -361,30 +372,59 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+
+              {/* 내지 */}
               <div className="mb-6">
                 <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">내지</h3>
                 <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
-                    <Select
-                      options={innerPaperOptions}
-                      value={innerPaper}
-                      onChange={(option) => setInnerPaper(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
-                    />
+                  <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div className="flex-grow">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">용지</label>
+                      <Select
+                        options={innerPaperOptions}
+                        value={innerPaper}
+                        onChange={(option) => setInnerPaper(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                          }),
+                        }}
+                      />
+                    </div>
+                    <div className="sm:w-32">
+                      {/* <label className="block text-sm font-medium text-gray-700 mb-1 sm:opacity-0">평량</label> */}
+                      <Select
+                        options={getInnerWeightOptions(innerPaper?.value)}
+                        value={innerWeight}
+                        onChange={(option) => setInnerWeight(option)}
+                        styles={{
+                          control: (base) => ({
+                            ...base,
+                            borderColor: "#d1d5db",
+                            "&:hover": { borderColor: "#9ca3af" },
+                            minHeight: "38px",
+                          }),
+                          valueContainer: (base) => ({
+                            ...base,
+                            padding: "0 8px",
+                          }),
+                          singleValue: (base) => ({
+                            ...base,
+                            fontSize: "0.875rem",
+                          }),
+                        }}
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">평량</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
                     <Select
-                      options={getInnerWeightOptions(innerPaper?.value)}
-                      value={innerWeight}
-                      onChange={(option) => setInnerWeight(option)}
+                      isSearchable={false}
+                      options={innerPageOptions}
+                      value={innerPageOptions.find((option) => option.value === innerPages.toString())}
+                      onChange={(option) => setInnerPages(Number(option?.value))}
                       styles={{
                         control: (base) => ({
                           ...base,
@@ -401,22 +441,6 @@ export default function Home() {
                       options={innerPrintingOptions}
                       value={innerPrinting}
                       onChange={(option) => setInnerPrinting(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">페이지</label>
-                    <Select
-                      isSearchable={false}
-                      options={innerPageOptions}
-                      value={innerPageOptions.find((option) => option.value === innerPages.toString())}
-                      onChange={(option) => setInnerPages(Number(option?.value))}
                       styles={{
                         control: (base) => ({
                           ...base,
