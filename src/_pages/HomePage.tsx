@@ -31,6 +31,44 @@ const sizeInfo = {
   A5: { cutSize: "148*210", workSize: "154*216" },
 };
 
+const customStyles = {
+  control: (provided: any, state: any) => ({
+    ...provided,
+    borderColor: state.isFocused ? "#e57373" : "#d1d5db", // 연한 빨간색
+    boxShadow: state.isFocused ? "0 0 0 1px #e57373" : "none",
+    "&:hover": {
+      borderColor: "#e57373",
+    },
+  }),
+  option: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? "#e57373" : state.isFocused ? "#ffcdd2" : "white",
+    color: state.isSelected ? "white" : "#333",
+    "&:active": {
+      backgroundColor: "#ef9a9a",
+    },
+  }),
+  input: (provided: any) => ({
+    ...provided,
+    color: "#333",
+  }),
+  singleValue: (provided: any) => ({
+    ...provided,
+    color: "#333",
+  }),
+  indicatorSeparator: (provided: any) => ({
+    ...provided,
+    backgroundColor: "#7d7d7d",
+  }),
+  dropdownIndicator: (provided: any) => ({
+    ...provided,
+    color: "#e57373",
+    "&:hover": {
+      color: "#ef9a9a",
+    },
+  }),
+};
+
 export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
@@ -73,7 +111,7 @@ export default function Home() {
 
   const generateInnerPageOptions = () => {
     let options = [];
-    for (let i = 52; i <= 1000; i += 4) {
+    for (let i = 52; i <= 1000; i += 2) {
       options.push({ value: i.toString(), label: `${i}페이지` });
     }
     return options;
@@ -239,13 +277,7 @@ export default function Home() {
                       options={sizeOptions}
                       value={selectedSize}
                       onChange={(option) => setSelectedSize(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                   {selectedSize && (
@@ -275,13 +307,7 @@ export default function Home() {
                       options={quantityOptions}
                       value={quantity}
                       onChange={(option) => setQuantity(option as OptionType)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                   <div>
@@ -291,13 +317,7 @@ export default function Home() {
                       options={bindingOptions}
                       value={binding}
                       onChange={(option) => setBinding(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                 </div>
@@ -315,13 +335,7 @@ export default function Home() {
                         options={coverPaperOptions}
                         value={coverPaper}
                         onChange={(option) => setCoverPaper(option)}
-                        styles={{
-                          control: (base) => ({
-                            ...base,
-                            borderColor: "#d1d5db",
-                            "&:hover": { borderColor: "#9ca3af" },
-                          }),
-                        }}
+                        styles={customStyles}
                       />
                     </div>
                     <div className="sm:w-32">
@@ -333,22 +347,7 @@ export default function Home() {
                         options={getCoverWeightOptions(coverPaper?.value)}
                         value={coverWeight}
                         onChange={(option) => setCoverWeight(option)}
-                        styles={{
-                          control: (base) => ({
-                            ...base,
-                            borderColor: "#d1d5db",
-                            "&:hover": { borderColor: "#9ca3af" },
-                            minHeight: "38px",
-                          }),
-                          valueContainer: (base) => ({
-                            ...base,
-                            padding: "0 8px",
-                          }),
-                          singleValue: (base) => ({
-                            ...base,
-                            fontSize: "0.875rem",
-                          }),
-                        }}
+                        styles={customStyles}
                       />
                     </div>
                   </div>
@@ -368,13 +367,7 @@ export default function Home() {
                       options={innerPrintingOptions}
                       value={outPrinting}
                       onChange={(option) => setOutPrinting(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                   <div>
@@ -384,13 +377,7 @@ export default function Home() {
                       options={coverCoatingOptions}
                       value={coverCoating}
                       onChange={(option) => setCoverCoating(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                 </div>
@@ -407,13 +394,7 @@ export default function Home() {
                         options={innerPaperOptions}
                         value={innerPaper}
                         onChange={(option) => setInnerPaper(option)}
-                        styles={{
-                          control: (base) => ({
-                            ...base,
-                            borderColor: "#d1d5db",
-                            "&:hover": { borderColor: "#9ca3af" },
-                          }),
-                        }}
+                        styles={customStyles}
                       />
                     </div>
                     <div className="sm:w-32">
@@ -424,22 +405,7 @@ export default function Home() {
                         options={getInnerWeightOptions(innerPaper?.value)}
                         value={innerWeight}
                         onChange={(option) => setInnerWeight(option)}
-                        styles={{
-                          control: (base) => ({
-                            ...base,
-                            borderColor: "#d1d5db",
-                            "&:hover": { borderColor: "#9ca3af" },
-                            minHeight: "38px",
-                          }),
-                          valueContainer: (base) => ({
-                            ...base,
-                            padding: "0 8px",
-                          }),
-                          singleValue: (base) => ({
-                            ...base,
-                            fontSize: "0.875rem",
-                          }),
-                        }}
+                        styles={customStyles}
                       />
                     </div>
                   </div>
@@ -450,13 +416,7 @@ export default function Home() {
                       options={innerPageOptions}
                       value={innerPageOptions.find((option) => option.value === innerPages.toString())}
                       onChange={(option) => setInnerPages(Number(option?.value))}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                   <div>
@@ -466,13 +426,7 @@ export default function Home() {
                       options={innerPrintingOptions}
                       value={innerPrinting}
                       onChange={(option) => setInnerPrinting(option)}
-                      styles={{
-                        control: (base) => ({
-                          ...base,
-                          borderColor: "#d1d5db",
-                          "&:hover": { borderColor: "#9ca3af" },
-                        }),
-                      }}
+                      styles={customStyles}
                     />
                   </div>
                   <div className="text-sm text-[#bd1f2b]">50페이지 미만 별도 문의</div>
