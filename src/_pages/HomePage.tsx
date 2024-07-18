@@ -496,7 +496,7 @@ export default function Home() {
 
       <section className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#212121]">접수 가능 파일</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#326bb4]">접수 가능 파일</h2>
           <div className="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
             <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-cyan-300 rounded-bl-full opacity-50"></div>
@@ -516,7 +516,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#212121]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4]">
                 포토샵 작업시 주의 사항
               </h2>
               <p className="text-lg sm:text-xl text-cyan-700 mb-4 sm:mb-6">PDF로 저장시 글씨는 래스터화 해주세요</p>
@@ -577,7 +577,7 @@ export default function Home() {
       <section id="file-requirements" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="w-full max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#212121]">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#8c4b99]">
               해상도 & 색상모드
             </h3>
             <div className="mb-8 sm:mb-12">
@@ -620,7 +620,7 @@ export default function Home() {
       <section id="services" className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="w-full mb-8 sm:mb-12 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#212121]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4]">
               일러스트 작업시 주의 사항
             </h2>
           </div>
@@ -661,7 +661,7 @@ export default function Home() {
 
       <section id="outline" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#212121]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99]">
             윤곽선 만들기 (일러스트)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -714,7 +714,7 @@ export default function Home() {
 
       <section id="background" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#212121]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99]">
             중복인쇄(오버프린트)
           </h2>
           <div className="mb-8 text-center">
@@ -769,12 +769,12 @@ export default function Home() {
 
       <section id="guidelines" className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-center text-[#212121]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-center text-[#326bb4]">
             안내사항
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div className="bg-gray-50 p-4 sm:p-6 rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-xl font-semibold mb-4 text-cyan-700">파일접수전 주의사항</h3>
+              <h3 className="text-xl font-semibold mb-4 text-[#326bb4]">파일접수전 주의사항</h3>
               <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-600">
                 <li>교정확인(오탈자, 띄어쓰기, 페이지번호등등)을 해주세요</li>
                 <li>책자사이즈는 원하시는 사이즈로 작업이 되었는지 확인해주세요</li>
