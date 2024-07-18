@@ -1,6 +1,16 @@
 export const data_a4 = [
   {
-    header: "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 칼라 (80모조)",
+    header:
+      "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 칼라 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -17,7 +27,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 흑백 (100모조)",
+    header:
+      "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 흑백 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -34,7 +54,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (80모조)",
+    header:
+      "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -51,7 +81,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 흑백 (100모조)",
+    header:
+      "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 흑백 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -69,6 +109,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 랑데뷰지 코팅없음) 190g 210g 240g 무선 칼라 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -85,7 +134,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 칼라 (80모조)",
+    header:
+      "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 칼라 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -102,7 +161,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 흑백 (80모조)",
+    header:
+      "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 흑백 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -120,7 +189,18 @@ export const data_a4 = [
   },
 
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (100모조)",
+    header:
+      "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (100모조)",
+    // 왜 두개야
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -137,7 +217,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 흑백 (80모조)",
+    header:
+      "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 흑백 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -155,7 +245,17 @@ export const data_a4 = [
   },
 
   {
-    header: "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 칼라 (100모조)",
+    header:
+      "성일 (표지 스노우지 유광 무광 단면코팅) 180g 200g 250g 300g 무선 칼라 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -173,7 +273,17 @@ export const data_a4 = [
   },
 
   {
-    header: "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 칼라 (100모조)",
+    header:
+      "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 칼라 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -190,7 +300,18 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (100모조)",
+    header:
+      "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (100모조)",
+    // 왜 두개야
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -207,7 +328,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 흑백 (80모조)",
+    header:
+      "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 흑백 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [""],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -225,6 +356,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 랑데뷰지코팅없음) 190g 210g 240g 무선 흑백 (80모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: [""],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -241,7 +381,17 @@ export const data_a4 = [
     ],
   },
   {
-    header: "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 흑백 (100모조)",
+    header:
+      "성일 (표지 스노우지 코팅없음) 180g 200g 250g 300g 무선 흑백 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [""],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -259,6 +409,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 랑데부지 코팅없음) 190g 210g 240g 무선 흑백 (100모조)",
+    options: {
+      binding: ["wireBinding"],
+      coverPaper: ["rendezvous"],
+      coverWeight: ["190", "210", "240"],
+      coverCoating: [""],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -276,6 +435,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 스노우지) 180g 200g 250g 300g 스프링 칼라 (80모조)",
+    options: {
+      binding: ["springBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -293,6 +461,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 스노우지) 180g 200g 250g 300g 스프링 칼라 (100모조)",
+    options: {
+      binding: ["springBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleColor"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -310,6 +487,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 스노우지) 180g 200g 250g 300g 스프링 흑백 (80모조)",
+    options: {
+      binding: ["springBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["80"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
@@ -327,6 +513,15 @@ export const data_a4 = [
   },
   {
     header: "성일 (표지 스노우지) 180g 200g 250g 300g 스프링 흑백 (100모조)",
+    options: {
+      binding: ["springBinding"],
+      coverPaper: ["snow", "art"],
+      coverWeight: ["180", "200", "250", "300"],
+      coverCoating: [],
+      innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
+      innerWeight: ["100"],
+      innerPrinting: ["doubleBlack"],
+    },
     xAxis: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
     yAxis: [10, 20, 30, 50, 100, 200, 300, 400, 500, 1000],
     values: [
