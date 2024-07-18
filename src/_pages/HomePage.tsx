@@ -492,10 +492,11 @@ export default function Home() {
                     />
                   </div>
                   <div className="text-sm text-[#bd1f2b]">50페이지 미만 별도 문의</div>
-                  <div className="flex items-center">
+                  <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
                     <span className="text-xl font-medium text-gray-700 mr-2">면지 추가</span>
                     <span className="text-xl text-[#bd1f2b]">별도 문의</span>
                   </div>
+                  <div className="flex items-center"></div>
                   <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
                     <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">후가공 - 별도 문의</p>
                   </div>
@@ -545,7 +546,7 @@ export default function Home() {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">디지털 윤전보다 저렴한 금액!</p>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">가격과 품질 두마리 다잡았다!!</p>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">
-              고객을 만족 시키는 성일과 함깨 하세요
+              고객을 만족 시키는 성일과 함께 하세요
             </p>
           </div>
           <div className="w-full aspect-video max-w-2xl mx-auto">
@@ -560,7 +561,9 @@ export default function Home() {
 
       <section className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#326bb4] my-font">접수 가능 파일</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#326bb4] my-font">
+            접수 가능 파일
+          </h2>
           <div className="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
             <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-cyan-300 rounded-bl-full opacity-50"></div>
@@ -595,7 +598,7 @@ export default function Home() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  글꼴 레지스터화
+                  글꼴 래스터화
                 </li>
                 <li className="flex items-center">
                   <svg
