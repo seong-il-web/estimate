@@ -15,6 +15,9 @@ import outline_img from "@/_assets/outline_img.webp";
 import background_on from "@/_assets/background_on.webp";
 import background_off from "@/_assets/background_off.webp";
 import overprint_img from "@/_assets/overprint_img.webp";
+
+import book01 from "@/_assets/book_01.png";
+import book02 from "@/_assets/book_02.png";
 import Image from "next/image";
 
 import Select from "react-select";
@@ -53,7 +56,7 @@ export default function Home() {
   }, []);
 
   const [binding, setBinding] = useState<OptionType | null>({ value: "wireBinding", label: "무선제본" });
-  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "rendezvous", label: "랑데부지" });
+  const [coverPaper, setCoverPaper] = useState<OptionType | null>({ value: "snow", label: "스노우지" });
   const [coverWeight, setCoverWeight] = useState<OptionType | null>({ value: "180", label: "180g" });
   const [coverCoating, setCoverCoating] = useState<OptionType | null>({ value: "noCoating", label: "코팅없음" });
   const [innerPaper, setInnerPaper] = useState<OptionType | null>({ value: "ivoryMosaic", label: "미색모조" });
@@ -105,9 +108,9 @@ export default function Home() {
   ];
 
   const coverPaperOptions: OptionType[] = [
-    { value: "rendezvous", label: "랑데부지" },
     { value: "snow", label: "스노우지" },
     { value: "art", label: "아트지" },
+    { value: "rendezvous", label: "랑데부지" },
   ];
 
   const getCoverWeightOptions = (paperType: string | undefined): OptionType[] => {
@@ -199,9 +202,27 @@ export default function Home() {
     <main className="w-full bg-gray-50">
       <section id="calc" className="px-4 sm:px-6 lg:px-8 py-6 sm:py-16 mt-[48px] bg-white">
         <div className="max-w-6xl mx-auto">
-          {/* Book cover images */}
-          <div className="w-full aspect-[2/1] bg-gray-200 mb-6 rounded-lg relative overflow-hidden">
-            <Image src="/path-to-your-image.jpg" alt="Book cover examples" layout="fill" objectFit="cover" />
+          <div className="w-full mb-6 rounded-lg overflow-hidden">
+            <div className="flex">
+              <div className="w-1/2 h-[150px] xs:h-[200px] sm:h-[300px] lg:h-[400px] relative">
+                <Image
+                  src={book01}
+                  alt="Book cover example 1"
+                  layout="fill"
+                  objectFit="contain"
+                  className="bg-gray-100"
+                />
+              </div>
+              <div className="w-1/2 h-[150px] xs:h-[200px] sm:h-[300px] lg:h-[400px] relative">
+                <Image
+                  src={book02}
+                  alt="Book cover example 2"
+                  layout="fill"
+                  objectFit="contain"
+                  className="bg-gray-100"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col lg:flex-row gap-8">
@@ -209,7 +230,7 @@ export default function Home() {
             <div className="lg:w-2/3">
               {/* 기본정보 */}
               <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">기본정보</h3>
+                <h3 className="text-xl font-semibold mb-4 bg-[#bd1f2b] text-white p-2">기본정보</h3>
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">규격</label>
@@ -284,7 +305,7 @@ export default function Home() {
 
               {/* 표지 */}
               <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">표지</h3>
+                <h3 className="text-xl font-semibold mb-4 bg-[#bd1f2b] text-white p-2">표지</h3>
                 <div className="space-y-4">
                   <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <div className="flex-grow">
@@ -377,7 +398,7 @@ export default function Home() {
 
               {/* 내지 */}
               <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-4 bg-blue-500 text-white p-2">내지</h3>
+                <h3 className="text-xl font-semibold mb-4 bg-[#bd1f2b] text-white p-2">내지</h3>
                 <div className="space-y-4">
                   <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <div className="flex-grow">
@@ -454,10 +475,10 @@ export default function Home() {
                       }}
                     />
                   </div>
-                  <div className="text-sm text-red-600">50페이지 미만 별도 문의</div>
+                  <div className="text-sm text-[#bd1f2b]">50페이지 미만 별도 문의</div>
                   <div className="flex items-center">
                     <span className="text-xl font-medium text-gray-700 mr-2">면지 추가</span>
-                    <span className="text-xl text-blue-600">별도 문의</span>
+                    <span className="text-xl text-[#bd1f2b]">별도 문의</span>
                   </div>
                   <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
                     <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">후가공 - 별도 문의</p>
@@ -469,7 +490,7 @@ export default function Home() {
             {/* Right column */}
             <div className="lg:w-1/3">
               <div className="bg-gray-100 p-4 rounded-lg sticky top-[100px]">
-                <h3 className="text-xl font-semibold mb-4 text-blue-600">예상견적 금액</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#bd1f2b]">예상견적 금액</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>인쇄비</span>
@@ -479,12 +500,12 @@ export default function Home() {
                     <span>제본비</span>
                     <span>포함</span>
                   </div>
-                  <div className="flex justify-between font-bold text-blue-600">
+                  <div className="flex justify-between font-bold text-[#bd1f2b]">
                     <span>합계(VAT별도)</span>
                     <span>{estimatedPrice.toLocaleString()}원</span>
                   </div>
                 </div>
-                <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors mt-4">
+                <button className="w-full bg-[#bd1f2b] text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors mt-4">
                   문의하기
                 </button>
               </div>
@@ -499,8 +520,8 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-[#212121]">
               교육교재, 학원교재
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-cyan-700 mb-2 sm:mb-4">
-              이제는 디지털 인쇄로 진행해보세요
+            <p className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-[#212121] mb-2 sm:mb-4">
+              이제는 <span className="text-[#bd1f2b]">디지털 인쇄</span>로 진행해보세요
             </p>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-1 sm:mb-2">
               디지털 윤전의 품질보다 고퀄리티의 품질과
@@ -510,7 +531,7 @@ export default function Home() {
             </p>
           </div>
           <div className="w-full aspect-video max-w-2xl mx-auto">
-            <div className="w-full h-full bg-gradient-to-br from-cyan-500 to-blue-600 flex justify-center items-center rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300">
+            <div className="w-full h-full bg-gradient-to-br from-[#bd1f2b] to-[#8a1720] flex justify-center items-center rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300">
               <span className="text-white text-3xl sm:text-lg md:text-xl lg:text-5xl font-bold">
                 고품질 디지털 인쇄
               </span>
