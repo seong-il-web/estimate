@@ -18,10 +18,13 @@ import overprint_img from "@/_assets/overprint_img.webp";
 
 import book01 from "@/_assets/book_01.png";
 import book02 from "@/_assets/book_02.png";
+import book03 from "@/_assets/book_03.png";
+import book04 from "@/_assets/book_04.png";
 import Image from "next/image";
 
 import Select from "react-select";
 import { calculatePrice } from "@/_utils";
+import { data_a4 } from "@/_utils/a4";
 
 type OptionType = { value: string; label: string };
 
@@ -100,7 +103,7 @@ export default function Home() {
   const [innerPaper, setInnerPaper] = useState<OptionType | null>({ value: "ivoryMosaic", label: "미색모조" });
   const [innerWeight, setInnerWeight] = useState<OptionType | null>({ value: "80", label: "80g" });
   const [innerPrinting, setInnerPrinting] = useState<OptionType | null>({ value: "doubleBlack", label: "양면흑백" });
-  const [outPrinting, setOutPrinting] = useState<OptionType | null>({ value: "doubleBlack", label: "양면흑백" });
+  //const [outPrinting, setOutPrinting] = useState<OptionType | null>({ value: "doubleBlack", label: "양면흑백" });
   const [estimatedPrice, setEstimatedPrice] = useState<number>(0);
 
   const [selectedSize, setSelectedSize] = useState<OptionType | null>({ value: "A4", label: "A4(210mm X 297mm)" });
@@ -178,7 +181,7 @@ export default function Home() {
     }
   };
 
-  const coverPrintingOptions: OptionType[] = [{ value: "doubleColor", label: "양면칼라" }];
+  // const coverPrintingOptions: OptionType[] = [{ value: "doubleColor", label: "양면칼라" }];
 
   const coverCoatingOptions: OptionType[] = [
     { value: "noCoating", label: "코팅없음" },
@@ -211,19 +214,6 @@ export default function Home() {
     { value: "doubleColor", label: "양면칼라" },
   ];
 
-  useEffect(() => {
-    // const price = calculatePrice({
-    //   coverPaper: coverPaper?.value,
-    //   coverWeight: coverWeight?.value,
-    //   innerWeight: innerWeight?.value,
-    //   binding: binding?.value,
-    //   innerPrinting: innerPrinting?.value,
-    //   innerPages,
-    //   quantity,
-    // });
-    setEstimatedPrice(0);
-  }, [coverPaper, coverWeight, innerWeight, binding, innerPrinting, innerPages, quantity]);
-
   // Effect to update coverWeight when coverPaper changes
   useEffect(() => {
     const newOptions = getCoverWeightOptions(coverPaper?.value);
@@ -235,6 +225,70 @@ export default function Home() {
     const newOptions = getInnerWeightOptions(innerPaper?.value);
     setInnerWeight(newOptions.length > 0 ? newOptions[0] : null);
   }, [innerPaper]);
+
+  // function findMatchingDataObject(options) {
+  //   return data_a4.find((item) => {
+  //     const header = item.header.toLowerCase();
+
+  //     const coverPaperMatch =
+  //       (options.coverPaper === "snow" && header.includes("스노우지")) ||
+  //       (options.coverPaper === "rendezvous" && header.includes("랑데뷰지"));
+
+  //     const bindingMatch = header.includes("무선");
+
+  //     const innerPrintingMatch =
+  //       (options.innerPrinting === "doubleColor" && header.includes("칼라")) ||
+  //       (options.innerPrinting === "doubleBlack" && header.includes("흑백"));
+
+  //     const coverCoatingMatch = header.includes("유광") || header.includes("무광");
+
+  //     const innerWeightMatch =
+  //       (options.innerWeight === "80" && header.includes("80모조")) ||
+  //       (options.innerWeight === "100" && header.includes("100모조"));
+
+  //     return coverPaperMatch && bindingMatch && innerPrintingMatch && coverCoatingMatch && innerWeightMatch;
+  //   });
+  // }
+
+  // function findXAxisIndex(xAxis, innerPages) {
+  //   return xAxis.findIndex((value, index, array) => {
+  //     return innerPages <= value || index === array.length - 1;
+  //   });
+  // }
+
+  // function findYAxisIndex(yAxis, quantity) {
+  //   return yAxis.findIndex((value, index, array) => {
+  //     return quantity <= value || index === array.length - 1;
+  //   });
+  // }
+
+  // function calculatePrice(options) {
+  //   const matchingData = findMatchingDataObject(options);
+  //   if (!matchingData) return null;
+
+  //   const xIndex = findXAxisIndex(matchingData.xAxis, options.innerPages);
+  //   const yIndex = findYAxisIndex(matchingData.yAxis, parseInt(options.quantity));
+
+  //   return matchingData.values[yIndex][xIndex];
+  // }
+
+  // // 사용 예시
+  // const selectedOptions = {
+  //   binding: binding?.value,
+  //   coverPaper: coverPaper?.value,
+  //   coverWeight: coverWeight?.value,
+  //   coverCoating: coverCoating?.value,
+  //   innerPaper: innerPaper?.value,
+  //   innerWeight: innerWeight?.value,
+  //   innerPrinting: innerPrinting?.value,
+  //   quantity: quantity.value,
+  //   innerPages: innerPages,
+  // };
+
+  // const price: any = calculatePrice(selectedOptions);
+
+  // console.log(price, "price");
+  // console.log(price * +innerPages, "total");
 
   return (
     <main className="w-full bg-gray-50">
@@ -255,6 +309,24 @@ export default function Home() {
                 <Image
                   src={book02}
                   alt="Book cover example 2"
+                  layout="fill"
+                  objectFit="contain"
+                  className="bg-gray-100"
+                />
+              </div>
+              <div className="w-1/2 h-[150px] xs:h-[200px] sm:h-[300px] lg:h-[400px] relative">
+                <Image
+                  src={book03}
+                  alt="Book cover example 3"
+                  layout="fill"
+                  objectFit="contain"
+                  className="bg-gray-100"
+                />
+              </div>
+              <div className="w-1/2 h-[150px] xs:h-[200px] sm:h-[300px] lg:h-[400px] relative">
+                <Image
+                  src={book04}
+                  alt="Book cover example 4"
                   layout="fill"
                   objectFit="contain"
                   className="bg-gray-100"
@@ -361,16 +433,6 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">인쇄도수</label>
-                    <Select
-                      isSearchable={false}
-                      options={innerPrintingOptions}
-                      value={outPrinting}
-                      onChange={(option) => setOutPrinting(option)}
-                      styles={customStyles}
-                    />
-                  </div>
-                  <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">코팅</label>
                     <Select
                       isSearchable={false}
@@ -471,17 +533,19 @@ export default function Home() {
       <section id="home" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-white">
         <div className="container mx-auto flex flex-col items-center">
           <div className="w-full mb-8 sm:mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-[#212121]">
+            <h2 className="text-2xl sm:text-2xl md:text-4xl lg:text-4xl font-bold mb-4 sm:mb-6 text-[#212121] my-font">
               교육교재, 학원교재
             </h2>
-            <p className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-[#212121] mb-2 sm:mb-4">
+            <p className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-[#212121] mb-2 sm:mb-4 my-font">
               이제는 <span className="text-[#bd1f2b]">디지털 인쇄</span>로 진행해보세요
             </p>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-1 sm:mb-2">
-              디지털 윤전의 품질보다 고퀄리티의 품질과
+              디지털 윤전의 품질보다 고퀄리티의 품질!
             </p>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">디지털 윤전보다 저렴한 금액!</p>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">가격과 품질 두마리 다잡았다!!</p>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600">
-              고객을 만족 시키는 가격으로 성일과 함께하세요
+              고객을 만족 시키는 성일과 함깨 하세요
             </p>
           </div>
           <div className="w-full aspect-video max-w-2xl mx-auto">
@@ -496,7 +560,7 @@ export default function Home() {
 
       <section className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#326bb4]">접수 가능 파일</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-[#326bb4] my-font">접수 가능 파일</h2>
           <div className="flex flex-row justify-center items-center space-x-4 sm:space-x-8">
             <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-cyan-300 rounded-bl-full opacity-50"></div>
@@ -516,7 +580,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4]">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4] my-font">
                 포토샵 작업시 주의 사항
               </h2>
               <p className="text-lg sm:text-xl text-cyan-700 mb-4 sm:mb-6">PDF로 저장시 글씨는 래스터화 해주세요</p>
@@ -577,7 +641,7 @@ export default function Home() {
       <section id="file-requirements" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="w-full max-w-4xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#8c4b99]">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#8c4b99] my-font">
               해상도 & 색상모드
             </h3>
             <div className="mb-8 sm:mb-12">
@@ -620,7 +684,7 @@ export default function Home() {
       <section id="services" className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="w-full mb-8 sm:mb-12 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#326bb4] my-font">
               일러스트 작업시 주의 사항
             </h2>
           </div>
@@ -661,7 +725,7 @@ export default function Home() {
 
       <section id="outline" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99] my-font">
             윤곽선 만들기 (일러스트)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -714,7 +778,7 @@ export default function Home() {
 
       <section id="background" className="py-12 sm:py-16 bg-gray-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#8c4b99] my-font">
             중복인쇄(오버프린트)
           </h2>
           <div className="mb-8 text-center">
@@ -769,7 +833,7 @@ export default function Home() {
 
       <section id="guidelines" className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-center text-[#326bb4]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-center text-[#326bb4] my-font">
             안내사항
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">

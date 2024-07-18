@@ -14,6 +14,17 @@ section {
   @apply transition-opacity duration-500 ease-in-out;
 }
 
+@font-face {
+  font-family: "BlackHanSans";
+  src: url("../font/BlackHanSans-Regular.ttf") format("woff2-variations");
+  font-weight: 1 999;
+  font-style: normal;
+}
+
+.my-font {
+  font-family: "BlackHanSans", sans-serif;
+}
+
 /* Add this new style for better visibility of header text when transparent */
 
 /* Swiper 스타일 커스터마이징 */

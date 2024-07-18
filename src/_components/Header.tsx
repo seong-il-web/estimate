@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import logo from "@/_assets/logo.jpg";
+import logo from "@/_assets/logo.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
