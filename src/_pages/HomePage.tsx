@@ -281,12 +281,13 @@ export default function Home() {
       const itemOptions = item.options;
       return Object.entries(parseOption).every(([key, value]) => {
         if (key === "binding") {
-          // Check if the binding option matches
           return itemOptions[key].includes(value);
         }
-        if (key === "coverCoating" && parseOption.binding === "springBinding") {
-          // For springBinding, ignore coverCoating
-          return true;
+        if (key === "coverCoating") {
+          // 코팅 없음 처리: 빈 배열([])과 빈 문자열("") 모두 처리
+          if (value === "" && (itemOptions[key] === undefined || itemOptions[key].length === 0)) {
+            return true;
+          }
         }
         if (Array.isArray(itemOptions[key])) {
           return itemOptions[key].includes(value);
@@ -295,6 +296,7 @@ export default function Home() {
       });
     });
   }
+
   function findXAxisIndex(xAxis: number[], pages: number): number {
     // pages가 최소값(여기서는 50)보다 작은 경우
     if (pages < xAxis[0]) {
@@ -981,7 +983,7 @@ export default function Home() {
                 <li>중복인쇄 체크는 해제 해주세요</li>
                 <li>이미지가 유실되거나 수정하지 않으셨는지 확인해주세요</li>
                 <li>
-                  {`글씨는 아웃라인으로 해주세요 글씨가 활성화 되어있으면 파일을 열었을때 저희가->(당사) 없는 서체일경우 글씨가 바뀔수 있습니다.`}
+                  {`글씨는 아웃라인으로 해주세요 글씨가 활성화 되어있으면 파일을 열었을때 당사에 없는 서체일경우 글씨가 바뀔수 있습니다.`}
                 </li>
                 <li>검정색 글씨는 K100 으로 해주세요 (색상이 섞이면 검정색이 깨끗하게 나오지 않습니다.)</li>
                 <li>본문 내용은 재단선 안쪽으로 여유를(15mm이상) 두고 작업하셔야 합니다.</li>
@@ -1002,6 +1004,7 @@ export default function Home() {
               <div className="mb-6">
                 <h4 className="text-lg font-medium mb-2 text-gray-700">택배배송</h4>
                 <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base text-gray-600">
+                  <li>택배 10만원이상 무료배송</li>
                   <li>도서, 산간, 오지 일부는 배송료가 추가됩니다.</li>
                   <li>배송은 발송일로부터 1~2일정도 소요됩니다. (주말, 공휴일 제외)</li>
                   <li>연휴나 명절같은 배송량이 증가되는 시기에는 배송업체의 사정에 따라 기간이 변동 될 수 있습니다.</li>
