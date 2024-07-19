@@ -22,7 +22,7 @@ const FooterSection = ({ items }: any) => (
 
 export default function Footer() {
   const companyInfo = [
-    "상호: 성일씨앤피",
+    "상호: 성일",
     "대표이사: 정환석",
     { text: "전화번호: 070-4035-5752", link: "tel:070-4035-5752" },
     "팩스: 02-2272-5649",
@@ -43,7 +43,7 @@ export default function Footer() {
           <FooterSection items={addressInfo} />
         </div>
         <div className="border-t border-gray-700 mt-4 pt-4 text-xs text-center">
-          <p>© 2024 성일씨앤피. All rights reserved.</p>
+          <p>© 2024 성일. All rights reserved.</p>
         </div>
       </div>
     </footer>
