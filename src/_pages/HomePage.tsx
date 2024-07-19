@@ -169,7 +169,7 @@ export default function Home() {
   const sizeOptions: OptionType[] = [
     { value: "A4", label: "A4(210mm X 297mm)" },
     { value: "A5", label: "A5(148mm X 210mm)" },
-    { value: "B5", label: "B5(188mm X 257mm)" },
+    { value: "B5", label: "B5(182mm X 257mm)" },
   ];
 
   const quantityOptions: OptionType[] = [
@@ -189,7 +189,7 @@ export default function Home() {
 
   const bindingOptions: OptionType[] = [
     { value: "wireBinding", label: "무선제본" },
-    { value: "springBinding", label: "스프링제본(트윈링)" },
+    { value: "springBinding", label: "스프링제(트윈링, PVC표지)" },
   ];
 
   const coverPaperOptions: OptionType[] = [
