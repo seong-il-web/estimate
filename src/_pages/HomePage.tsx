@@ -280,6 +280,14 @@ export default function Home() {
     return data.find((item: any) => {
       const itemOptions = item.options;
       return Object.entries(parseOption).every(([key, value]) => {
+        if (key === "binding") {
+          // Check if the binding option matches
+          return itemOptions[key].includes(value);
+        }
+        if (key === "coverCoating" && parseOption.binding === "springBinding") {
+          // For springBinding, ignore coverCoating
+          return true;
+        }
         if (Array.isArray(itemOptions[key])) {
           return itemOptions[key].includes(value);
         }
@@ -287,7 +295,6 @@ export default function Home() {
       });
     });
   }
-
   function findXAxisIndex(xAxis: number[], pages: number): number {
     // pages가 최소값(여기서는 50)보다 작은 경우
     if (pages < xAxis[0]) {
@@ -318,13 +325,7 @@ export default function Home() {
     const xIndex = findXAxisIndex(matchingData.xAxis, options.pages);
     const yIndex = findYAxisIndex(matchingData.yAxis, options.quantity);
 
-    console.log(matchingData, "matchingData");
-    console.log(xIndex, "xindex");
-    console.log(yIndex, "yIndex");
-
     let price = matchingData.values[yIndex][xIndex];
-
-    console.log(price, "price::::");
 
     // 100페이지 미만일 경우 나누기 연산
     // if (options.pages < 100) {
