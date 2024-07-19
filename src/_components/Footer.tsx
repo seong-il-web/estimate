@@ -16,7 +16,7 @@ export default function Footer() {
   const companyInfo = [
     "상호: 성일씨앤피",
     "대표이사: 정환석",
-    "전화번호: 02-2272-5648",
+    "전화번호: 070-4035-5752",
     "팩스: 02-2272-5649",
     "이메일: sungil5647@hanmail.net",
   ];
