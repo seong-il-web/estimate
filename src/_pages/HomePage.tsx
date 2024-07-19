@@ -189,7 +189,7 @@ export default function Home() {
 
   const bindingOptions: OptionType[] = [
     { value: "wireBinding", label: "무선제본" },
-    { value: "springBinding", label: "스프링제(트윈링, PVC표지)" },
+    { value: "springBinding", label: "스프링제본(트윈링, PVC표지)" },
   ];
 
   const coverPaperOptions: OptionType[] = [
