@@ -36,7 +36,7 @@ type OptionType = { value: string; label: string };
 
 const sizeInfo = {
   A4: { cutSize: "210*297", workSize: "216*303" },
-  B5: { cutSize: "182*257", workSize: "182*2563" },
+  B5: { cutSize: "182*257", workSize: "188*263" },
   A5: { cutSize: "148*210", workSize: "154*216" },
 };
 
