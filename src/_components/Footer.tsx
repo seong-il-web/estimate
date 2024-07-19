@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const FooterSection = ({ items }: any) => (
@@ -5,7 +7,13 @@ const FooterSection = ({ items }: any) => (
     <ul>
       {items.map((item: any, index: number) => (
         <li key={index} className="mb-1">
-          <span className="text-gray-400 text-sm">{item}</span>
+          {typeof item === "object" && item.link ? (
+            <a href={item.link} className="text-gray-400 text-sm hover:text-gray-300">
+              {item.text}
+            </a>
+          ) : (
+            <span className="text-gray-400 text-sm">{item}</span>
+          )}
         </li>
       ))}
     </ul>
@@ -16,9 +24,9 @@ export default function Footer() {
   const companyInfo = [
     "상호: 성일씨앤피",
     "대표이사: 정환석",
-    "전화번호: 070-4035-5752",
+    { text: "전화번호: 070-4035-5752", link: "tel:070-4035-5752" },
     "팩스: 02-2272-5649",
-    "이메일: sungil5647@hanmail.net",
+    { text: "이메일: sungil5647@hanmail.net", link: "mailto:sungil5647@hanmail.net" },
   ];
 
   const addressInfo = [
