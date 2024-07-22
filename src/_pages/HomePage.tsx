@@ -330,6 +330,7 @@ export default function Home() {
         };
       }
     }
+
     const matchingData = findMatchingData(parseOption, selectedSize);
 
     if (!matchingData) return null;

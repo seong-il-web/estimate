@@ -297,12 +297,12 @@ export const data_a5 = [
     ],
   },
   {
-    header: "성일 (표지 랑데뷰지 유광 무광 단면코팅) 190g 210g 240g 무선 칼라 (100모조)",
+    header: "성일 (표지 랑데뷰지 코팅없음) 190g 210g 240g 무선 칼라 (100모조)",
     options: {
       binding: ["wireBinding"],
       coverPaper: ["rendezvous"],
       coverWeight: ["190", "210", "240"],
-      coverCoating: ["singleMatteCoating", "singleGlossCoating"],
+      coverCoating: [""],
       innerPaper: ["whiteMosaic", "ivoryMosaic", "newPlus"],
       innerWeight: ["100"],
       innerPrinting: ["doubleColor"],
