@@ -606,14 +606,20 @@ export default function Home() {
                       styles={customStyles}
                     />
                   </div>
-                  <div className="text-sm text-[#bd1f2b]">50페이지 미만 별도 문의</div>
+                  <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
+                    <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">
+                      50페이지 미만 - <span className="text-[#bd1f2b] font-semibold">별도 문의</span>
+                    </p>
+                  </div>
                   <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
                     <span className="text-xl font-medium text-gray-700 mr-2">면지 추가</span>
-                    <span className="text-xl text-[#bd1f2b]">별도 문의</span>
+                    <span className="text-xl text-[#bd1f2b] font-semibold">별도 문의</span>
                   </div>
                   <div className="flex items-center"></div>
                   <div className="mt-8 sm:mt-12 text-center bg-gray-100 p-4 sm:p-6 rounded-lg shadow-lg">
-                    <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">후가공 - 별도 문의</p>
+                    <p className="text-base sm:text-lg md:text-xl mb-2 text-[#212121] mb-[0px]">
+                      후가공 - <span className="text-[#bd1f2b] font-semibold">별도 문의</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -641,7 +647,7 @@ export default function Home() {
                   className="w-full bg-[#bd1f2b] text-white py-2 px-4 rounded hover:bg-red-300 transition-colors mt-4"
                   onClick={redirectToKakaoChannel}
                 >
-                  문의하기
+                  문의하기<span className="text-[12px]">{"(카카오톡 상담으로 연결)"}</span>
                 </button>
               </div>
             </div>
